@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">dParking</string>
+    <string name="settings">Preferencias</string>
+    <string name="loading">Cargando...</string>
+    <string name="list">Lista</string>
+    <string name="map">Mapa</string>
+    <string name="language">Idioma</string>
+    <string name="contact">Kontaktua</string>
+    <string name="not_connected">Sin conexión</string>
+</resources>

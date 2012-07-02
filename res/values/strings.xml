@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">dParking</string>
+    <string name="settings">Hobespenak</string>
+    <string name="not_connected">Konexiorik gabe</string>
+    <string name="loading">Kargatzen...</string>
+    <string name="list">Zerrenda</string>
+    <string name="map">Mapa</string>
+    <string name="language">Hizkuntza</string>
+    <string name="contact">Kontaktua</string>
+</resources>

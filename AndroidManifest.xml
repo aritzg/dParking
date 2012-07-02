@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="net.sareweb.android.dParking"
+    android:installLocation="preferExternal"
+    android:versionCode="1"
+    android:versionName="0.1" >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-sdk android:minSdkVersion="8"/>
+
+    <application
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name" >
+        <uses-library android:name="com.google.android.maps" />
+        <activity android:name=".activity.DParkingMainActivity_" 
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:configChanges="locale">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.StationListActivity_" android:theme="@android:style/Theme.NoTitleBar"/>
+        <activity android:name=".activity.StationMapActivity" android:theme="@android:style/Theme.NoTitleBar"/>
+        <activity android:name=".activity.SettingsActivity_" android:theme="@android:style/Theme.NoTitleBar"/>
+        <activity android:name=".activity.AboutActivity_" android:theme="@android:style/Theme.NoTitleBar"/>
+    </application>
+
+</manifest>
