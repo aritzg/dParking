@@ -22,8 +22,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.StationListActivity_" android:theme="@android:style/Theme.NoTitleBar"/>
-        <activity android:name=".activity.StationMapActivity" android:theme="@android:style/Theme.NoTitleBar"/>
+        <activity android:name=".activity.ParkingListActivity_" android:theme="@android:style/Theme.NoTitleBar"/>
+        <activity android:name=".activity.ParkingMapActivity" android:theme="@android:style/Theme.NoTitleBar"/>
         <activity android:name=".activity.SettingsActivity_" android:theme="@android:style/Theme.NoTitleBar"/>
         <activity android:name=".activity.AboutActivity_" android:theme="@android:style/Theme.NoTitleBar"/>
     </application>

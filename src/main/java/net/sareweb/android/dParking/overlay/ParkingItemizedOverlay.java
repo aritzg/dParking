@@ -3,7 +3,7 @@ package net.sareweb.android.dParking.overlay;
 import java.util.ArrayList;
 
 import net.sareweb.android.dParking.R;
-import net.sareweb.android.dParking.model.Station;
+import net.sareweb.android.dParking.model.Parking;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -11,27 +11,27 @@ import android.widget.TextView;
 
 import com.google.android.maps.ItemizedOverlay;
 
-public class StationItemizedOverlay extends ItemizedOverlay<StationOverlayItem> {
+public class ParkingItemizedOverlay extends ItemizedOverlay<ParkingOverlayItem> {
 
-	private ArrayList<StationOverlayItem> mOverlayItems = new ArrayList<StationOverlayItem>();
+	private ArrayList<ParkingOverlayItem> mOverlayItems = new ArrayList<ParkingOverlayItem>();
 	Context mContext;
 
-	public StationItemizedOverlay(Drawable defaultMarker) {
+	public ParkingItemizedOverlay(Drawable defaultMarker) {
 		super(boundCenterBottom(defaultMarker));
 	}
 
-	public StationItemizedOverlay(Drawable defaultMarker, Context context) {
+	public ParkingItemizedOverlay(Drawable defaultMarker, Context context) {
 		super(boundCenterBottom(defaultMarker));
 		mContext = context;
 	}
 
-	public void addOverlay(StationOverlayItem overlay) {
+	public void addOverlay(ParkingOverlayItem overlay) {
 		mOverlayItems.add(overlay);
 		populate();
 	}
 
 	@Override
-	protected StationOverlayItem createItem(int i) {
+	protected ParkingOverlayItem createItem(int i) {
 		return mOverlayItems.get(i);
 	}
 
@@ -42,15 +42,15 @@ public class StationItemizedOverlay extends ItemizedOverlay<StationOverlayItem> 
 	
 	@Override
 	protected boolean onTap(int index) {
-		StationOverlayItem item = mOverlayItems.get(index);
-		Station s = item.getStation();
+		ParkingOverlayItem item = mOverlayItems.get(index);
+		Parking p = item.getparking();
 		Dialog dialog = new Dialog(mContext);
-		dialog.setContentView(R.layout.station_dialog);
+		dialog.setContentView(R.layout.parking_dialog);
 
 		dialog.setTitle(item.getTitle());
 		
 		TextView info = (TextView) dialog.findViewById(R.id.info);
-		info.setText(s.getBicisDisponibles() + " / " + s.getPlazasTotales());
+		info.setText(p.getPlazasLibres() + " / " + p.getPlazasTotales());
 	
 		dialog.show();
 		return true;

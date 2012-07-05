@@ -2,36 +2,37 @@ package net.sareweb.android.dParking.model;
 
 import java.util.List;
 
-import net.sareweb.android.dParking.exception.NoSuchStationException;
+import net.sareweb.android.dParking.exception.NoSuchParkingException;
 
 public class City {
 	
 	private String name;
-	private List<Station> stations;
+	private List<Parking> parkings;
 	
-	public City(String name, List<Station> stations){
+	
+	public City(String name, List<Parking> parkings){
 		this.name = name;
-		this.stations = stations;
+		this.parkings = parkings;
 	}
 	
 	public String getCityName(){
 		return name;
 	}
 	
-	public int getStastionAmount(){
-		if(stations!=null) return stations.size();
+	public int getParkingAmount(){
+		if(parkings!=null) return parkings.size();
 		else return 0;
 	}
 	
-	public Station getStation(int i) throws NoSuchStationException{
-		if(stations==null) {
-			throw new NoSuchStationException();
+	public Parking getParking(int i) throws NoSuchParkingException{
+		if(parkings==null) {
+			throw new NoSuchParkingException();
 		}
-		return stations.get(i);
+		return parkings.get(i);
 	}
 	
-	public List<Station> getStations(){
-		return stations;
+	public List<Parking> getParkings(){
+		return parkings;
 	}
 	
 }

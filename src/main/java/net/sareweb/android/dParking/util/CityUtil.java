@@ -1,12 +1,11 @@
 package net.sareweb.android.dParking.util;
 
 import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 import net.sareweb.android.dParking.model.City;
-import net.sareweb.android.dParking.model.Station;
+import net.sareweb.android.dParking.model.Parking;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -14,10 +13,10 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 
+import android.util.Log;
+
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-
-import android.util.Log;
 
 public class CityUtil {
 
@@ -31,8 +30,8 @@ public class CityUtil {
 			if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
 				String result = EntityUtils.toString(response.getEntity());
 
-				List<Station> stations = getStationsFromJson(result);
-				return new City(DBiziConstants.BDIZI_CITY_NAME, stations);
+				List<Parking> parkings = getParkingsFromJson(result);
+				return new City(DParkingConstants.DPARKING_CITY_NAME, parkings);
 			} else {
 				Log.e(TAG, "Not successful getting data");
 				return null;
@@ -44,14 +43,14 @@ public class CityUtil {
 	}
 
 	private static String composeServiceURL(String idioma) {
-		return "http://" + DBiziConstants.SERVER + DBiziConstants.SERVICE + "&"
-				+ DBiziConstants.PARAM_IDIOMA + "=" + idioma;
+		return "http://" + DParkingConstants.SERVER + DParkingConstants.SERVICE + "&"
+				+ DParkingConstants.PARAM_IDIOMA + "=" + idioma;
 	}
 	
-	private static List<Station> getStationsFromJson(String json){
+	private static List<Parking> getParkingsFromJson(String json){
 		GsonBuilder gsonBuilder = new GsonBuilder();
 
-		Type collectionType = new TypeToken<Collection<Station>>() {
+		Type collectionType = new TypeToken<Collection<Parking>>() {
 		}.getType();
 		return gsonBuilder.create().fromJson(json,
 				collectionType);

@@ -1,7 +1,7 @@
 package net.sareweb.android.dParking.activity;
 
 import net.sareweb.android.dParking.R;
-import net.sareweb.android.dParking.util.DBiziConstants;
+import net.sareweb.android.dParking.util.DParkingConstants;
 import net.sareweb.android.dParking.util.LangUtil;
 import android.app.TabActivity;
 import android.content.Intent;
@@ -29,9 +29,9 @@ public class DParkingMainActivity extends TabActivity implements
 		super.onCreate(savedInstanceState);
 		Log.i(TAG, "onCreate");
 		
-		userPrefs = getSharedPreferences(DBiziConstants.USER_PREFS, MODE_PRIVATE);
+		userPrefs = getSharedPreferences(DParkingConstants.USER_PREFS, MODE_PRIVATE);
 		
-		LangUtil.updateLanguage(this, userPrefs.getString(DBiziConstants.USER_PREFS_LANG, DBiziConstants.USER_PREF_LANG_EU));
+		LangUtil.updateLanguage(this, userPrefs.getString(DParkingConstants.USER_PREFS_LANG, DParkingConstants.USER_PREF_LANG_EU));
 		
 		setContentView(R.layout.main);
 
@@ -45,10 +45,10 @@ public class DParkingMainActivity extends TabActivity implements
 				.newTabSpec("list")
 				.setIndicator(getString(R.string.list),
 						res.getDrawable(R.drawable.list))
-				.setContent(StationListActivity_.intent(this).get());
+				.setContent(ParkingListActivity_.intent(this).get());
 		tabHost.addTab(spec);
 
-		Intent mapIntent = new Intent().setClass(this, StationMapActivity.class);
+		Intent mapIntent = new Intent().setClass(this, ParkingMapActivity.class);
 		spec = tabHost.newTabSpec("map")
 				.setIndicator(getString(R.string.map), res.getDrawable(R.drawable.world))
 				.setContent(mapIntent);
@@ -76,10 +76,10 @@ public class DParkingMainActivity extends TabActivity implements
 			View tab = tabHost.getTabWidget().getChildAt(i); 
 			
 			tab.setBackgroundColor(
-							Color.parseColor(DBiziConstants.STYLE_COLOR_TAB_NO_SELECTED));
+							Color.parseColor(DParkingConstants.STYLE_COLOR_TAB_NO_SELECTED));
 			
 			TextView tv = (TextView) tab.findViewById(android.R.id.title);
-            tv.setTextColor(Color.parseColor(DBiziConstants.STYLE_COLOR_TAB_NO_SELECTED_TEXT));
+            tv.setTextColor(Color.parseColor(DParkingConstants.STYLE_COLOR_TAB_NO_SELECTED_TEXT));
 		
 		
 		}
@@ -87,10 +87,10 @@ public class DParkingMainActivity extends TabActivity implements
 				.getChildAt(tabHost.getCurrentTab());
 		
 		tab.setBackgroundColor(
-						Color.parseColor(DBiziConstants.STYLE_COLOR_TAB_SELECTED));
+						Color.parseColor(DParkingConstants.STYLE_COLOR_TAB_SELECTED));
 		
 		TextView tv = (TextView) tab.findViewById(android.R.id.title);
-        tv.setTextColor(Color.parseColor(DBiziConstants.STYLE_COLOR_TAB_SELECTED_TEXT));
+        tv.setTextColor(Color.parseColor(DParkingConstants.STYLE_COLOR_TAB_SELECTED_TEXT));
 	}
 	
 	@Click(R.id.imgReload)

@@ -5,12 +5,13 @@ import java.util.List;
 
 import net.sareweb.android.dParking.R;
 import net.sareweb.android.dParking.model.City;
+import net.sareweb.android.dParking.model.Parking;
 import net.sareweb.android.dParking.model.Station;
-import net.sareweb.android.dParking.overlay.StationItemizedOverlay;
-import net.sareweb.android.dParking.overlay.StationOverlayItem;
+import net.sareweb.android.dParking.overlay.ParkingItemizedOverlay;
+import net.sareweb.android.dParking.overlay.ParkingOverlayItem;
 import net.sareweb.android.dParking.util.CityUtil;
 import net.sareweb.android.dParking.util.ConnectionUtil;
-import net.sareweb.android.dParking.util.DBiziConstants;
+import net.sareweb.android.dParking.util.DParkingConstants;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -21,7 +22,7 @@ import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
 import com.google.android.maps.Overlay;
 
-public class StationMapActivity extends MapActivity {
+public class ParkingMapActivity extends MapActivity {
 	
     private static String TAG = "StationListActivity";
 
@@ -31,35 +32,35 @@ public class StationMapActivity extends MapActivity {
         if(!ConnectionUtil.isOnline(this)){
     		setContentView(R.layout.not_connected);
     	}else{
-            setContentView(R.layout.station_map);
+            setContentView(R.layout.parking_map);
             
             MapView mapView = (MapView) findViewById(R.id.mapview);
     	    mapView.setBuiltInZoomControls(true);
     	    MapController controller =  mapView.getController();
     	    controller.setCenter(getDefaultGeoPoint());
-    	    controller.setZoom(DBiziConstants.BDIZI_DEFAULT_ZOOM);
+    	    controller.setZoom(DParkingConstants.DPARKING_DEFAULT_ZOOM);
     	    
     	    mapOverlays = mapView.getOverlays();
-    	    city = CityUtil.initCity(DBiziConstants.IDIOMA_CAS);
+    	    city = CityUtil.initCity(DParkingConstants.IDIOMA_CAS);
     	    loadStationsInMap();
     	}
     }
     
     private void loadStationsInMap(){
 		Drawable drawable = this.getResources().getDrawable(android.R.drawable.btn_star);
-	    itemizedoverlay = new StationItemizedOverlay(drawable, this);
+	    itemizedoverlay = new ParkingItemizedOverlay(drawable, this);
 	 
 	    mapOverlays.clear();
 	    
-	    for (Station s : city.getStations()) {
+	    for (Parking p : city.getParkings()) {
 
-			Double lat = s.getLatitud() * 1000000;
-			Double lng = s.getLongitud() * 1000000;
+			Double lat = p.getLatitud() * 1000000;
+			Double lng = p.getLongitud() * 1000000;
 
 			if (lat.intValue() != 0 && lng.intValue() != 0) {
 				GeoPoint point = new GeoPoint(lat.intValue(), lng.intValue());
-				StationOverlayItem overlayitem = new StationOverlayItem(point,
-						s.getNombre(), "", s);
+				ParkingOverlayItem overlayitem = new ParkingOverlayItem(point,
+						p.getNombre(), "", p);
 				itemizedoverlay.addOverlay(overlayitem);
 				mapOverlays.add(itemizedoverlay);
 			}
@@ -67,7 +68,7 @@ public class StationMapActivity extends MapActivity {
 	}
     
     private GeoPoint getDefaultGeoPoint(){
-    	return new GeoPoint(DBiziConstants.BDIZI_DEFAULT_LAT, DBiziConstants.BDIZI_DEFAULT_LNG);
+    	return new GeoPoint(DParkingConstants.DPARKING_DEFAULT_LAT, DParkingConstants.DPARKING_DEFAULT_LNG);
     }
 
 	@Override
@@ -77,7 +78,7 @@ public class StationMapActivity extends MapActivity {
 	
 	City city;
 	List<Overlay> mapOverlays;
-	StationItemizedOverlay itemizedoverlay;
+	ParkingItemizedOverlay itemizedoverlay;
 	SharedPreferences userPrefs;
 
 }

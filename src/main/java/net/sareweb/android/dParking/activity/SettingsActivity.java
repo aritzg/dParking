@@ -2,7 +2,7 @@ package net.sareweb.android.dParking.activity;
 
 import net.sareweb.android.dParking.activity.DParkingMainActivity_;
 import net.sareweb.android.dParking.R;
-import net.sareweb.android.dParking.util.DBiziConstants;
+import net.sareweb.android.dParking.util.DParkingConstants;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -22,12 +22,12 @@ public class SettingsActivity extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.settings);
 
-		userPrefs = getSharedPreferences(DBiziConstants.USER_PREFS,
+		userPrefs = getSharedPreferences(DParkingConstants.USER_PREFS,
 				MODE_PRIVATE);
-		String lang = userPrefs.getString(DBiziConstants.USER_PREFS_LANG,
-				DBiziConstants.USER_PREF_LANG_EU);
+		String lang = userPrefs.getString(DParkingConstants.USER_PREFS_LANG,
+				DParkingConstants.USER_PREF_LANG_EU);
 
-		if (lang.equals(DBiziConstants.USER_PREF_LANG_ES)) {
+		if (lang.equals(DParkingConstants.USER_PREF_LANG_ES)) {
 			rdLangCas.setChecked(true);
 		} else {
 			rdLangEus.setChecked(true);
@@ -41,19 +41,19 @@ public class SettingsActivity extends Activity implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		if (userPrefs == null)
-			userPrefs = getSharedPreferences(DBiziConstants.USER_PREFS,
+			userPrefs = getSharedPreferences(DParkingConstants.USER_PREFS,
 					MODE_PRIVATE);
 		editor = userPrefs.edit();
 
 		switch (v.getId()) {
 		case R.id.rdLangCas:
-			editor.putString(DBiziConstants.USER_PREFS_LANG,
-					DBiziConstants.USER_PREF_LANG_ES);
+			editor.putString(DParkingConstants.USER_PREFS_LANG,
+					DParkingConstants.USER_PREF_LANG_ES);
 			break;
 
 		default:
-			editor.putString(DBiziConstants.USER_PREFS_LANG,
-					DBiziConstants.USER_PREF_LANG_EU);
+			editor.putString(DParkingConstants.USER_PREFS_LANG,
+					DParkingConstants.USER_PREF_LANG_EU);
 			break;
 		}
 		editor.commit();
