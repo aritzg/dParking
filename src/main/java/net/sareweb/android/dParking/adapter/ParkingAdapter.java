@@ -5,14 +5,17 @@ import java.net.URLDecoder;
 import net.sareweb.android.dParking.R;
 import net.sareweb.android.dParking.exception.NoSuchParkingException;
 import net.sareweb.android.dParking.model.City;
+import net.sareweb.android.dParking.model.Parking;
+import android.app.Dialog;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-public class ParkingAdapter extends BaseAdapter{
+public class ParkingAdapter extends BaseAdapter implements OnClickListener{
 
 	private Context context;
 	private City city;
@@ -51,21 +54,38 @@ public class ParkingAdapter extends BaseAdapter{
 		}
 		
 		TextView name = (TextView) convertView.findViewById(R.id.name);
-		try {
-			String nameDecoded = URLDecoder.decode(city.getParking(position).getNombre());
-			name.setText(nameDecoded);
-		} catch (NoSuchParkingException e) {
-			name.setText("Error!");
-		}
-
 		TextView info = (TextView) convertView.findViewById(R.id.info);
+		
+		Parking parking = null;
 		try {
-			info.setText(city.getParking(position).getPlazasLibres() + " / " + city.getParking(position).getPlazasTotales());
+			parking = city.getParking(position);
 		} catch (NoSuchParkingException e) {
 			info.setText("Error!");
+			return convertView;
 		}
 		
+		String nameDecoded = URLDecoder.decode(parking.getNombre());
+		name.setText(nameDecoded);
+		info.setText(parking.getPlazasLibres() + " / "
+				+ parking.getPlazasTotales());
+		convertView.setTag(parking);
+		convertView.setOnClickListener(this);
+		
 		return convertView;
+	}
+
+	@Override
+	public void onClick(View view) {
+		Parking parking = ((Parking)view.getTag());
+		Dialog dialog = new Dialog(view.getContext());
+		dialog.setContentView(R.layout.parking_dialog);
+
+		dialog.setTitle(parking.getNombre());
+		
+		TextView info = (TextView) dialog.findViewById(R.id.info);
+		info.setText(parking.getPlazasLibres() + " / " + parking.getPlazasTotales());
+	
+		dialog.show();
 	}
 
 }
