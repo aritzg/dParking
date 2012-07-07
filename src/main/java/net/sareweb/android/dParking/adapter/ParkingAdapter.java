@@ -3,6 +3,7 @@ package net.sareweb.android.dParking.adapter;
 import java.net.URLDecoder;
 
 import net.sareweb.android.dParking.R;
+import net.sareweb.android.dParking.dialog.ParkingInfoDialog;
 import net.sareweb.android.dParking.exception.NoSuchParkingException;
 import net.sareweb.android.dParking.model.City;
 import net.sareweb.android.dParking.model.Parking;
@@ -77,14 +78,7 @@ public class ParkingAdapter extends BaseAdapter implements OnClickListener{
 	@Override
 	public void onClick(View view) {
 		Parking parking = ((Parking)view.getTag());
-		Dialog dialog = new Dialog(view.getContext());
-		dialog.setContentView(R.layout.parking_dialog);
-
-		dialog.setTitle(parking.getNombre());
-		
-		TextView info = (TextView) dialog.findViewById(R.id.info);
-		info.setText(parking.getPlazasLibres() + " / " + parking.getPlazasTotales());
-	
+		ParkingInfoDialog dialog = new ParkingInfoDialog(view.getContext(), parking);
 		dialog.show();
 	}
 

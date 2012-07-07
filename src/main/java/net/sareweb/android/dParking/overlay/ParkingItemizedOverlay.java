@@ -3,6 +3,7 @@ package net.sareweb.android.dParking.overlay;
 import java.util.ArrayList;
 
 import net.sareweb.android.dParking.R;
+import net.sareweb.android.dParking.dialog.ParkingInfoDialog;
 import net.sareweb.android.dParking.model.Parking;
 import android.app.Dialog;
 import android.content.Context;
@@ -44,14 +45,7 @@ public class ParkingItemizedOverlay extends ItemizedOverlay<ParkingOverlayItem> 
 	protected boolean onTap(int index) {
 		ParkingOverlayItem item = mOverlayItems.get(index);
 		Parking p = item.getparking();
-		Dialog dialog = new Dialog(mContext);
-		dialog.setContentView(R.layout.parking_dialog);
-
-		dialog.setTitle(item.getTitle());
-		
-		TextView info = (TextView) dialog.findViewById(R.id.info);
-		info.setText(p.getPlazasLibres() + " / " + p.getPlazasTotales());
-	
+		ParkingInfoDialog dialog = new ParkingInfoDialog(mContext, p);
 		dialog.show();
 		return true;
 	}

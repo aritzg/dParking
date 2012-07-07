@@ -3,14 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@android:color/black"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:textSize="15dp" />
+        android:textSize="15dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,6 +19,7 @@
         android:orientation="vertical" >
 
         <LinearLayout
+            android:id="@+id/layoutTarifa"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 
@@ -40,7 +41,40 @@
 
         </LinearLayout>
 
+        <TableLayout
+            android:id="@+id/layoutTarifaTabla"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:visibility="gone">
+
+            <TableRow
+                android:id="@+id/tableRow1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableRow2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableRow3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableRow4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+            </TableRow>
+        </TableLayout>
+
         <LinearLayout
+            android:id="@+id/layoutGasto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1" >
@@ -63,6 +97,54 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/layoutCounter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" 
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Minutos"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <Button
+                android:id="@+id/btnMinus"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  -  " />
+
+            <EditText
+                android:id="@+id/txMin"
+                android:layout_width="52dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="numberDecimal"
+                android:text="0"/>
+
+
+            <Button
+                android:id="@+id/btnPlus"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  +  " />
+
+            <TextView
+                android:id="@+id/txCoste"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0.00€"
+                android:textAppearance="?android:attr/textAppearanceLarge" 
+                android:gravity="right"
+                android:paddingLeft="20dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutDirections"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1" >
