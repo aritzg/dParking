@@ -2,10 +2,17 @@
 <resources>
     <string name="app_name">dParking</string>
     <string name="settings">Preferencias</string>
+    <string name="not_connected">Sin conexión</string>
     <string name="loading">Cargando...</string>
     <string name="list">Lista</string>
     <string name="map">Mapa</string>
     <string name="language">Idioma</string>
-    <string name="contact">Kontaktua</string>
-    <string name="not_connected">Sin conexión</string>
+    <string name="contact">Contacto</string>
+    <string name="tarifa">Tarifa</string>
+    <string name="tramo">Tramo</string>
+    <string name="precio">Precio</string>
+    <string name="calcular_gasto">Calcular coste</string>
+    <string name="minutos">Minutos</string>
+    <string name="directions">Como llegar...</string>
+    
 </resources>

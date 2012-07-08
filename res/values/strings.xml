@@ -8,4 +8,10 @@
     <string name="map">Mapa</string>
     <string name="language">Hizkuntza</string>
     <string name="contact">Kontaktua</string>
+    <string name="tarifa">Tarifa</string>
+    <string name="tramo">Tartea</string>
+    <string name="precio">Prezioa</string>
+    <string name="calcular_gasto">Prezioa kalkulatu</string>
+    <string name="minutos">Minutu</string>
+    <string name="directions">Nola iritsi...</string>
 </resources>
