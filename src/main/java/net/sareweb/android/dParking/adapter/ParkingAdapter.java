@@ -67,7 +67,7 @@ public class ParkingAdapter extends BaseAdapter implements OnClickListener{
 		
 		String nameDecoded = URLDecoder.decode(parking.getNombre());
 		name.setText(nameDecoded);
-		info.setText(parking.getPlazasLibres() + " / "
+		info.setText("Libre: " + parking.getPlazasLibres() + " / "
 				+ parking.getPlazasTotales());
 		convertView.setTag(parking);
 		convertView.setOnClickListener(this);

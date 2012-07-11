@@ -22,7 +22,10 @@ public class CityUtil {
 
 	public static City initCity(String idioma) {
 
-		String serviceURL = composeServiceURL(idioma);
+		String lang="eus";
+		if(idioma.equals("es"))lang="cas";
+		
+		String serviceURL = composeServiceURL(lang);
 		DefaultHttpClient httpClient = new DefaultHttpClient();
 		HttpGet httpGet = new HttpGet(serviceURL);
 		try {

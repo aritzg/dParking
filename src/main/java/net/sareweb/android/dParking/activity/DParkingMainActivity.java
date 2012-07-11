@@ -17,8 +17,11 @@ import android.widget.TextView;
 
 import com.googlecode.androidannotations.annotations.Click;
 import com.googlecode.androidannotations.annotations.EActivity;
+import com.googlecode.androidannotations.annotations.OptionsItem;
+import com.googlecode.androidannotations.annotations.OptionsMenu;
 
 @EActivity
+@OptionsMenu(value = R.menu.menu)
 public class DParkingMainActivity extends TabActivity implements
 		OnTabChangeListener {
 
@@ -103,6 +106,11 @@ public class DParkingMainActivity extends TabActivity implements
 		overridePendingTransition(0, 0);
 		startActivity(intent);
 
+	}
+	
+	@OptionsItem(R.id.about)
+	void about() {
+		AboutActivity_.intent(this).start();
 	}
 
 	TabHost tabHost;

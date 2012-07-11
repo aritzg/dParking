@@ -9,13 +9,15 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class ParkingInfoDialog extends Dialog implements android.view.View.OnClickListener{
+public class ParkingInfoDialog extends Dialog implements android.view.View.OnClickListener, TextWatcher{
 
 	private Parking parking;
 	private EditText txMin;
@@ -28,7 +30,7 @@ public class ParkingInfoDialog extends Dialog implements android.view.View.OnCli
 		setContentView(R.layout.parking_dialog);
 		setTitle(parking.getNombre());
 		TextView info = (TextView) findViewById(R.id.info);
-		info.setText(parking.getPlazasLibres() + " / " + parking.getPlazasTotales());
+		info.setText("Libre: " + parking.getPlazasLibres() + " / " + parking.getPlazasTotales());
 		
 		LinearLayout layoutTarifa = (LinearLayout) findViewById( R.id.layoutTarifa);
 		layoutTarifa.setOnClickListener(this);
@@ -42,7 +44,12 @@ public class ParkingInfoDialog extends Dialog implements android.view.View.OnCli
 		Button btnMinus = (Button) findViewById( R.id.btnMinus);
 		btnMinus.setOnClickListener(this);
 		
+		if(txMin==null)txMin=(EditText)findViewById( R.id.txMin);
+		txMin.addTextChangedListener(this);
+		setDatosTarif();
+		
 	}
+
 
 	@Override
 	public void onClick(View v) {
@@ -66,6 +73,32 @@ public class ParkingInfoDialog extends Dialog implements android.view.View.OnCli
 		default:
 			break;
 		}
+	}
+	
+	
+	@Override
+	public void afterTextChanged(Editable s) {
+		String minString = txMin.getText().toString();
+		int min=0;
+		if(minString!=null && !minString.equals("")){
+			min = Integer.parseInt(minString);
+		}
+		calcCoste(min);
+	}
+
+
+	@Override
+	public void beforeTextChanged(CharSequence s, int start, int count,
+			int after) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void onTextChanged(CharSequence s, int start, int before, int count) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	
@@ -113,5 +146,32 @@ public class ParkingInfoDialog extends Dialog implements android.view.View.OnCli
 		if(txCoste==null)txCoste=(TextView)findViewById( R.id.txCoste);
 		txCoste.setText(tarifaUtil.obtenerCostePorMinutos(min) + "€");
 	}
+	
+	private void setDatosTarif() {
+		if(tarifaUtil==null)
+			try {
+				tarifaUtil = TarifaFactory.getTarifaUtil(parking);
+			} catch (NoTarifaException e) {
+				e.printStackTrace();
+				return;
+			}
+		TextView precio1 = (TextView) findViewById(R.id.precio1);
+		precio1.setText(tarifaUtil.getPrecioTramo(0) + "€/min");
+		TextView precio2 = (TextView) findViewById(R.id.precio2);
+		precio2.setText(tarifaUtil.getPrecioTramo(1) + "€/min");
+		TextView precio3 = (TextView) findViewById(R.id.precio3);
+		precio3.setText(tarifaUtil.getPrecioTramo(2) + "€/min");
+		TextView precio4 = (TextView) findViewById(R.id.precio4);
+		precio4.setText(tarifaUtil.getPrecioTramo(3) + "€/min");
+		TextView precio5 = (TextView) findViewById(R.id.precio5);
+		precio5.setText(tarifaUtil.getPrecioTramo(4) + "€/min");
+		TextView precio6 = (TextView) findViewById(R.id.precio6);
+		precio6.setText(tarifaUtil.getPrecioTramo(5) + "€/min");
+		
+		
+	}
+
+
+
 
 }

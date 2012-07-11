@@ -6,7 +6,6 @@ import java.util.List;
 import net.sareweb.android.dParking.R;
 import net.sareweb.android.dParking.model.City;
 import net.sareweb.android.dParking.model.Parking;
-import net.sareweb.android.dParking.model.Station;
 import net.sareweb.android.dParking.overlay.ParkingItemizedOverlay;
 import net.sareweb.android.dParking.overlay.ParkingOverlayItem;
 import net.sareweb.android.dParking.util.CityUtil;

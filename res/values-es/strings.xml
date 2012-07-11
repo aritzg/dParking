@@ -3,7 +3,7 @@
     <string name="app_name">dParking</string>
     <string name="settings">Preferencias</string>
     <string name="not_connected">Sin conexión</string>
-    <string name="loading">Cargando...</string>
+    <string name="loading">Cargando…</string>
     <string name="list">Lista</string>
     <string name="map">Mapa</string>
     <string name="language">Idioma</string>
@@ -13,6 +13,8 @@
     <string name="precio">Precio</string>
     <string name="calcular_gasto">Calcular coste</string>
     <string name="minutos">Minutos</string>
-    <string name="directions">Como llegar...</string>
-    
+    <string name="directions">Como llegar…</string>
+    <string name="about">Acerca de…</string>
+    <string name="license">Licencia</string>
+    <string name="code">Código</string>
 </resources>

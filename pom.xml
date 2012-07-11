@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.sareweb.android</groupId>
 	<artifactId>dParking</artifactId>
-	<version>0.1</version>
+	<version>0.2</version>
 	<packaging>apk</packaging>
 	<name>dParking</name>
 

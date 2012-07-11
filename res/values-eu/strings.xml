@@ -3,7 +3,7 @@
     <string name="app_name">dParking</string>
     <string name="settings">Hobespenak</string>
     <string name="not_connected">Konexiorik gabe</string>
-    <string name="loading">Kargatzen...</string>
+    <string name="loading">Kargatzen…</string>
     <string name="list">Zerrenda</string>
     <string name="map">Mapa</string>
     <string name="language">Hizkuntza</string>
@@ -13,5 +13,8 @@
     <string name="precio">Prezioa</string>
     <string name="calcular_gasto">Prezioa kalkulatu</string>
     <string name="minutos">Minutu</string>
-    <string name="directions">Nola iritsi...</string>
+    <string name="directions">Nola iritsi…</string>
+    <string name="about">Honi buruz…</string>
+    <string name="license">Lizentzia</string>
+    <string name="code">Kodea</string>
 </resources>
