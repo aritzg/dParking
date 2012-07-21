@@ -30,7 +30,7 @@ public class ParkingInfoDialog extends Dialog implements android.view.View.OnCli
 		setContentView(R.layout.parking_dialog);
 		setTitle(parking.getNombre());
 		TextView info = (TextView) findViewById(R.id.info);
-		info.setText("Libre: " + parking.getPlazasLibres() + " / " + parking.getPlazasTotales());
+		info.setText(parking.getPlazasLibres() + " / " + parking.getPlazasTotales());
 		
 		LinearLayout layoutTarifa = (LinearLayout) findViewById( R.id.layoutTarifa);
 		layoutTarifa.setOnClickListener(this);
@@ -38,15 +38,13 @@ public class ParkingInfoDialog extends Dialog implements android.view.View.OnCli
 		layoutGasto.setOnClickListener(this);
 		LinearLayout layoutDirections = (LinearLayout) findViewById( R.id.layoutDirections);
 		layoutDirections.setOnClickListener(this);
+		LinearLayout layoutNavigate = (LinearLayout) findViewById( R.id.layoutNavigate);
+		layoutNavigate.setOnClickListener(this);
 		
 		Button btnPlus = (Button) findViewById( R.id.btnPlus);
 		btnPlus.setOnClickListener(this);
 		Button btnMinus = (Button) findViewById( R.id.btnMinus);
 		btnMinus.setOnClickListener(this);
-		
-		if(txMin==null)txMin=(EditText)findViewById( R.id.txMin);
-		txMin.addTextChangedListener(this);
-		setDatosTarif();
 		
 	}
 
@@ -63,6 +61,9 @@ public class ParkingInfoDialog extends Dialog implements android.view.View.OnCli
 			break;
 		case R.id.layoutDirections:
 			clickOnDirections();
+			break;
+		case R.id.layoutNavigate:
+			clickOnNavigate();
 			break;
 		case R.id.btnPlus:
 			incMin(1);
@@ -117,6 +118,13 @@ public class ParkingInfoDialog extends Dialog implements android.view.View.OnCli
 				android.content.Intent.ACTION_VIEW,
 				Uri.parse("http://maps.google.com/maps?daddr=" + parking.getLatitud().toString() + "," + parking.getLongitud().toString()));
 		getContext().startActivity(intent);
+	}
+	
+	private void clickOnNavigate() {
+		String location = parking.getLatitud().toString() + "," + parking.getLongitud().toString();
+		Intent i = new Intent(Intent.ACTION_VIEW,
+		Uri.parse("google.navigation:q=" + location));
+		getContext().startActivity(i);
 	}
 	
 	private void showHide(View v){
