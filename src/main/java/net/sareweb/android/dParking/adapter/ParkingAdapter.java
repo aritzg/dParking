@@ -5,8 +5,11 @@ import java.net.URLDecoder;
 import net.sareweb.android.dParking.R;
 import net.sareweb.android.dParking.dialog.ParkingInfoDialog;
 import net.sareweb.android.dParking.exception.NoSuchParkingException;
+import net.sareweb.android.dParking.exception.NoTarifaException;
 import net.sareweb.android.dParking.model.City;
 import net.sareweb.android.dParking.model.Parking;
+import net.sareweb.android.dParking.tarifa.TarifaFactory;
+import net.sareweb.android.dParking.tarifa.TarifaUtil;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -56,6 +59,7 @@ public class ParkingAdapter extends BaseAdapter implements OnClickListener{
 		
 		TextView name = (TextView) convertView.findViewById(R.id.name);
 		TextView info = (TextView) convertView.findViewById(R.id.info);
+		ImageView imageTarifa = (ImageView) convertView.findViewById(R.id.imageTarifa);
 		ImageView image = (ImageView) convertView.findViewById(R.id.imageIndicator);
 		
 		Parking parking = null;
@@ -72,6 +76,25 @@ public class ParkingAdapter extends BaseAdapter implements OnClickListener{
 				+ parking.getPlazasTotales());
 		convertView.setTag(parking);
 		convertView.setOnClickListener(this);
+		
+		int imgTarfiaRes = R.drawable.euro1;
+		TarifaUtil tarifa;
+		try {
+			tarifa = TarifaFactory.getTarifaUtil(parking);
+			switch (tarifa.getTipoTarifa()) {
+			case 2:
+				imgTarfiaRes = R.drawable.euro2;
+				break;
+			case 3:
+				imgTarfiaRes = R.drawable.euro3;
+				break;
+			default:
+				break;
+			}
+		} catch (NoTarifaException e1) {
+			e1.printStackTrace();
+		}
+		imageTarifa.setImageResource(imgTarfiaRes);
 		
 		int imgSrc = R.drawable.disp00;
 		
@@ -101,7 +124,7 @@ public class ParkingAdapter extends BaseAdapter implements OnClickListener{
 				imgSrc = R.drawable.disp01;
 			}
 		}catch (Exception e){
-			//No hacer nada fallo en la conversión de números
+			//No hacer nada fallo en la conversiï¿½n de nï¿½meros
 		}
 		
 		image.setImageResource(imgSrc);

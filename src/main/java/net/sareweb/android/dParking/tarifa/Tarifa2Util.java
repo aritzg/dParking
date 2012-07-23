@@ -9,4 +9,9 @@ public class Tarifa2Util extends TarifaUtil{
 		super();
 		precios = precios2;
 	}
+
+	@Override
+	public int getTipoTarifa() {
+		return 2;
+	}
 }
