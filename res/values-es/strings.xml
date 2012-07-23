@@ -18,4 +18,5 @@
     <string name="about">Acerca de…</string>
     <string name="license">Licencia</string>
     <string name="code">Código</string>
+    <string name="counter">Contador</string>
 </resources>
