@@ -20,7 +20,8 @@
 		        android:layout_height="wrap_content"
 		        android:layout_gravity="left"
 		        android:background="#FFFFFF"
-		        android:orientation="horizontal" >
+		        android:orientation="horizontal" 
+		        android:padding="7dp">
 
 			        <TextView
 			            android:id="@+id/name"
@@ -32,7 +33,7 @@
 			            android:id="@+id/imageTarifa"
 			            android:layout_width="wrap_content"
 			            android:layout_height="fill_parent"
-			            android:layout_weight="0"
+			            android:layout_weight="1"
 			            android:src="@drawable/euro1"/>
 
 
@@ -40,7 +41,6 @@
 			            android:id="@+id/imageIndicator"
 			            android:layout_width="140dp"
 			            android:layout_height="fill_parent"
-			            android:layout_weight="1"
 			            android:src="@drawable/disp00"/>
 
 				</LinearLayout>
