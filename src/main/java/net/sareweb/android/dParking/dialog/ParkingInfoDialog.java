@@ -110,6 +110,7 @@ public class ParkingInfoDialog extends Dialog implements android.view.View.OnCli
 	
 	private void clickOnTarifa(){
 		LinearLayout layoutTarifaTabla = (LinearLayout) findViewById( R.id.layoutTarifaTabla);
+		setDatosTarifa();
 		showHide(layoutTarifaTabla);
 	}
 	
@@ -155,7 +156,7 @@ public class ParkingInfoDialog extends Dialog implements android.view.View.OnCli
 		txCoste.setText(tarifaUtil.obtenerCostePorMinutos(min) + "€");
 	}
 	
-	private void setDatosTarif() {
+	private void setDatosTarifa() {
 		if(tarifaUtil==null)
 			try {
 				tarifaUtil = TarifaFactory.getTarifaUtil(parking);

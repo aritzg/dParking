@@ -1,7 +1,5 @@
 package net.sareweb.android.dParking.tarifa;
 
-import java.text.DecimalFormat;
-
 import android.util.Log;
 
 public abstract class TarifaUtil {
@@ -37,6 +35,8 @@ public abstract class TarifaUtil {
 	double roundTwoDecimals(double d) {
 		return (double)Math.round(d * 100) / 100;
 	}
+	
+	public abstract int getTipoTarifa();
 	
 	private int finTramo[] = {0,15,90,120,240,480,840};
 	private final String TAG ="TarifaUtil";		
