@@ -3,10 +3,16 @@ package net.sareweb.android.dParking.activity;
 import java.util.Date;
 
 import net.sareweb.android.dParking.R;
+import net.sareweb.android.dParking.exception.NoTarifaException;
+import net.sareweb.android.dParking.tarifa.TarifaFactory;
 import net.sareweb.android.dParking.util.Prefs_;
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
 
 import com.googlecode.androidannotations.annotations.Click;
@@ -15,23 +21,20 @@ import com.googlecode.androidannotations.annotations.ViewById;
 import com.googlecode.androidannotations.annotations.sharedpreferences.Pref;
 
 @EActivity
-public class CounterActivity extends Activity {
+public class CounterActivity extends Activity implements OnCheckedChangeListener{
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.counter);
+		rdGrTarifas.setOnCheckedChangeListener(this);
 	}
-	
-	
 
 	@Override
 	protected void onResume() {
 		super.onResume();
 		paintLayout();
 	}
-
-
 
 	@Click(R.id.btnStartStop)
 	void clickOnStartStop() {
@@ -44,26 +47,74 @@ public class CounterActivity extends Activity {
 		paintLayout();
 	}
 
+	@Override
+	public void onCheckedChanged(RadioGroup group, int checkedId) {
+		switch (checkedId) {
+		case R.id.rdTarifa1:
+			prefs.counterTarifa().put(1);
+			break;
+		case R.id.rdTarifa2:
+			prefs.counterTarifa().put(2);
+			break;
+		case R.id.rdTarifa3:
+			prefs.counterTarifa().put(3);
+			break;
+
+		default:
+			break;
+		}
+		paintLayout();
+	}
+
 	private void paintLayout() {
 		setButtonText();
-		updateData(prefs.counterTimeStamp().get());
+		int tarifa = prefs.counterTarifa().getOr(1);
+		updateData(prefs.counterTimeStamp().get(), tarifa);
+		toggleSelectedRadio(tarifa);
+		
 	}
 
 	private void setButtonText() {
 		if (prefs.counterTimeStamp().get() == 0) {// Counter stoped
 			btnStartStop.setText(R.string.start);
 		} else {
-			btnStartStop.setText(R.string.stop);
+			btnStartStop.setText(R.string.counting_stop);
 		}
 	}
 
-	private void updateData(long counterTimeStamp) {
+	private void updateData(long counterTimeStamp, int tarifa) {
 		if (counterTimeStamp == 0) {
 			txTime.setText(" 0 min");
 			txPrice.setText(" 0 €");
 		}else{
-			txTime.setText("" + String.valueOf(calculateMinutes(counterTimeStamp)) + " min");
+			long minutos = calculateMinutes(counterTimeStamp);
+			txTime.setText("" + minutos + " min");
+			try {
+				double precio = TarifaFactory.getTarifaUtil(tarifa).obtenerCostePorMinutos(minutos);
+				txPrice.setText(precio + " €");
+			} catch (NoTarifaException e) {
+				txPrice.setText(" 0 €");
+				Log.e(TAG, "No such tarifa");
+			}
 		}
+	}
+	
+	private void toggleSelectedRadio(int tarifa) {
+		switch (tarifa) {
+		case 1:
+			rdTarifa1.toggle();
+			break;
+		case 2:
+			rdTarifa2.toggle();
+			break;
+		case 3:
+			rdTarifa3.toggle();
+			break;
+
+		default:
+			break;
+		}
+		
 	}
 
 	private long calculateMinutes(long counterTimeStamp) {
@@ -78,8 +129,19 @@ public class CounterActivity extends Activity {
 	TextView txTime;
 	@ViewById
 	TextView txPrice;
+	@ViewById
+	RadioGroup rdGrTarifas;
+	
+	@ViewById
+	RadioButton rdTarifa1;
+	@ViewById
+	RadioButton rdTarifa2;
+	@ViewById
+	RadioButton rdTarifa3;
+	
 	@Pref
 	Prefs_ prefs;
 	private static String TAG = "CounterActivity";
+	
 
 }

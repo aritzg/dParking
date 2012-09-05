@@ -10,6 +10,13 @@ public class TarifaFactory {
 		
 		int tarifa = calculaTarifa(parking.getNombre());
 		
+		return getTarifaUtil(tarifa);
+		
+	}
+	
+	
+	public static TarifaUtil getTarifaUtil(int tarifa) throws NoTarifaException{
+		
 		switch (tarifa) {
 		case 1:
 			Log.d(TAG,"Returning tarifa1");

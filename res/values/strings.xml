@@ -21,5 +21,6 @@
     <string name="counter">Kontagailua</string>
     <string name="start">Hasi</string>
     <string name="stop">Gelditu</string>
-    <string name="time">Denbora</string>
+    <string name="counting_stop">Zenbatzen… Gelditu</string>
+    <string name="time">Denbora: </string>
 </resources>

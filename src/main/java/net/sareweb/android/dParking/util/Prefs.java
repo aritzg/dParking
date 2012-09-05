@@ -6,4 +6,5 @@ import com.googlecode.androidannotations.annotations.sharedpreferences.SharedPre
 @SharedPref(value = Scope.UNIQUE)
 public interface Prefs {
 	long counterTimeStamp();
+	int counterTarifa();
 }
