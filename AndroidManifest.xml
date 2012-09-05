@@ -24,6 +24,7 @@
         </activity>
         <activity android:name=".activity.ParkingListActivity_" android:theme="@android:style/Theme.NoTitleBar"/>
         <activity android:name=".activity.ParkingMapActivity" android:theme="@android:style/Theme.NoTitleBar"/>
+        <activity android:name=".activity.CounterActivity_" android:theme="@android:style/Theme.NoTitleBar"/>
         <activity android:name=".activity.SettingsActivity_" android:theme="@android:style/Theme.NoTitleBar"/>
         <activity android:name=".activity.AboutActivity_" android:theme="@android:style/Theme.NoTitleBar"/>
     </application>

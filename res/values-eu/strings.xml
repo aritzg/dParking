@@ -19,4 +19,7 @@
     <string name="license">Lizentzia</string>
     <string name="code">Kodea</string>
     <string name="counter">Kontagailua</string>
+    <string name="start">Hasi</string>
+    <string name="stop">Gelditu</string>
+    <string name="time">Denbora</string>
 </resources>

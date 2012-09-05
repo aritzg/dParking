@@ -19,4 +19,7 @@
     <string name="license">Licencia</string>
     <string name="code">Código</string>
     <string name="counter">Contador</string>
+    <string name="start">Iniciar</string>
+    <string name="stop">Parar</string>
+    <string name="time">Tiempo</string>
 </resources>
