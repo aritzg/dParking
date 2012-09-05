@@ -61,7 +61,7 @@ public class DParkingMainActivity extends TabActivity implements
 		spec = tabHost
 				.newTabSpec("counter")
 				.setIndicator(getString(R.string.counter),
-						res.getDrawable(R.drawable.settings))
+						res.getDrawable(R.drawable.conta))
 				.setContent(CounterActivity_.intent(this).get());
 		tabHost.addTab(spec);
 		

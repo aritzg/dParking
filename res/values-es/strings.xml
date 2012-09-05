@@ -21,5 +21,8 @@
     <string name="counter">Contador</string>
     <string name="start">Iniciar</string>
     <string name="stop">Parar</string>
-    <string name="time">Tiempo</string>
+    <string name="counting_stop">Contando… Parar</string>
+    <string name="time">Tiempo: </string>
+    <string name="x_euro">%1$s €</string>
+    <string name="x_min">%1$s min</string>
 </resources>

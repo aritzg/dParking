@@ -12,11 +12,14 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
 
+import com.googlecode.androidannotations.annotations.Background;
 import com.googlecode.androidannotations.annotations.Click;
 import com.googlecode.androidannotations.annotations.EActivity;
+import com.googlecode.androidannotations.annotations.UiThread;
 import com.googlecode.androidannotations.annotations.ViewById;
 import com.googlecode.androidannotations.annotations.sharedpreferences.Pref;
 
@@ -65,13 +68,25 @@ public class CounterActivity extends Activity implements OnCheckedChangeListener
 		}
 		paintLayout();
 	}
-
-	private void paintLayout() {
+	
+	@Background
+	void countOneMinute() {
+    	try {
+			Thread.currentThread().sleep(60000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	paintLayout();
+	}
+    
+    @UiThread
+	void paintLayout() {
 		setButtonText();
-		int tarifa = prefs.counterTarifa().getOr(1);
+		int tarifa = prefs.counterTarifa().getOr(3);
 		updateData(prefs.counterTimeStamp().get(), tarifa);
 		toggleSelectedRadio(tarifa);
-		
+		countOneMinute();
 	}
 
 	private void setButtonText() {
@@ -83,17 +98,18 @@ public class CounterActivity extends Activity implements OnCheckedChangeListener
 	}
 
 	private void updateData(long counterTimeStamp, int tarifa) {
+		
 		if (counterTimeStamp == 0) {
-			txTime.setText(" 0 min");
-			txPrice.setText(" 0 €");
+			txTime.setText(" --");
+			txPrice.setText(" --");
 		}else{
 			long minutos = calculateMinutes(counterTimeStamp);
-			txTime.setText("" + minutos + " min");
+			txTime.setText(getString(R.string.x_min, minutos));
 			try {
 				double precio = TarifaFactory.getTarifaUtil(tarifa).obtenerCostePorMinutos(minutos);
-				txPrice.setText(precio + " €");
+				txPrice.setText(getString(R.string.x_euro, precio));
 			} catch (NoTarifaException e) {
-				txPrice.setText(" 0 €");
+				txPrice.setText(getString(R.string.x_euro, 0));
 				Log.e(TAG, "No such tarifa");
 			}
 		}
@@ -120,7 +136,12 @@ public class CounterActivity extends Activity implements OnCheckedChangeListener
 	private long calculateMinutes(long counterTimeStamp) {
 		Date now = new Date();
 		long nowTimeStamp = now.getTime();
-		return (nowTimeStamp - counterTimeStamp) / 60000;
+		long millDiff = nowTimeStamp - counterTimeStamp;
+		if(millDiff /(1000*60*60*24)>=1){
+			prefs.counterTimeStamp().put(0);
+			millDiff=0;
+		}
+		return millDiff / 60000;
 	}
 
 	@ViewById

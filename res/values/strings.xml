@@ -23,4 +23,6 @@
     <string name="stop">Gelditu</string>
     <string name="counting_stop">Zenbatzen… Gelditu</string>
     <string name="time">Denbora: </string>
+    <string name="x_euro">%1$s €</string>
+    <string name="x_min">%1$s min</string>
 </resources>
