@@ -18,4 +18,11 @@
     <string name="about">Honi buruz…</string>
     <string name="license">Lizentzia</string>
     <string name="code">Kodea</string>
+    <string name="counter">Kontagailua</string>
+    <string name="start">Hasi</string>
+    <string name="stop">Gelditu</string>
+    <string name="counting_stop">Zenbatzen… Gelditu</string>
+    <string name="time">Denbora: </string>
+    <string name="x_euro">%1$s €</string>
+    <string name="x_min">%1$s min</string>
 </resources>

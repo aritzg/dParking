@@ -10,8 +10,8 @@ public abstract class TarifaUtil {
 		return precios[i];
 	}
 	
-	public double obtenerCostePorMinutos(int minutos){
-		int minutosRestantes = minutos;
+	public double obtenerCostePorMinutos(long minutos){
+		long minutosRestantes = minutos;
 		int tramo=1;
 		double suma = 0.00;
 		Log.d(TAG,"Minutos: " + minutos);
