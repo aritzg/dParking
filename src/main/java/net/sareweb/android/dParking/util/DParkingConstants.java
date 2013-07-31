@@ -9,9 +9,9 @@ public class DParkingConstants {
 	public static final String IDIOMA_EUS = "eus";
 	
 	public static final String DPARKING_CITY_NAME = "Donostia";
-	public static final int DPARKING_DEFAULT_LAT = 43313500;
-	public static final int DPARKING_DEFAULT_LNG = -1992903;
-	public static final int DPARKING_DEFAULT_ZOOM = 14;
+	public static final double DPARKING_DEFAULT_LAT = 43.313500;
+	public static final double DPARKING_DEFAULT_LNG = -1.992903;
+	public static final int DPARKING_DEFAULT_ZOOM = 13;
 
 	
 	public static final String USER_PREFS = "userPrefs";

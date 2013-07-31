@@ -19,13 +19,10 @@ public class TarifaFactory {
 		
 		switch (tarifa) {
 		case 1:
-			Log.d(TAG,"Returning tarifa1");
 			return new Tarifa1Util();
 		case 2:
-			Log.d(TAG,"Returning tarifa2");
 			return new Tarifa2Util();
 		case 3:
-			Log.d(TAG,"Returning tarifa3");
 			return new Tarifa3Util();
 		default:
 			throw new NoTarifaException();

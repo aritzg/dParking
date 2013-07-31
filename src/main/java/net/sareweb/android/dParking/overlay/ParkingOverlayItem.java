@@ -2,10 +2,8 @@ package net.sareweb.android.dParking.overlay;
 
 import net.sareweb.android.dParking.model.Parking;
 
-import com.google.android.maps.GeoPoint;
-import com.google.android.maps.OverlayItem;
 
-public class ParkingOverlayItem extends OverlayItem{
+public class ParkingOverlayItem {} /* extends OverlayItem{
 
 	private Parking parking;
 	
@@ -23,3 +21,4 @@ public class ParkingOverlayItem extends OverlayItem{
 	}
 	
 }
+*/

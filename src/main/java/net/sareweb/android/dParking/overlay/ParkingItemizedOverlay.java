@@ -10,9 +10,8 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.widget.TextView;
 
-import com.google.android.maps.ItemizedOverlay;
 
-public class ParkingItemizedOverlay extends ItemizedOverlay<ParkingOverlayItem> {
+public class ParkingItemizedOverlay{}/* extends ItemizedOverlay<ParkingOverlayItem> {
 
 	private ArrayList<ParkingOverlayItem> mOverlayItems = new ArrayList<ParkingOverlayItem>();
 	Context mContext;
@@ -51,4 +50,4 @@ public class ParkingItemizedOverlay extends ItemizedOverlay<ParkingOverlayItem> 
 	}
 
 	
-}
+}*/

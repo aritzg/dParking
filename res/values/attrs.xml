@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="DashboardButton">
+        <attr name="imgResId" format="integer"/>
+        <attr name="buttonText" format="string"/>
+    </declare-styleable>
+</resources>

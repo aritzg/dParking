@@ -20,17 +20,16 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.googlecode.androidannotations</groupId>
-			<artifactId>androidannotations</artifactId>
-			<version>2.6</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.googlecode.androidannotations</groupId>
-			<artifactId>androidannotations</artifactId>
-			<classifier>api</classifier>
-			<version>2.6</version>
-		</dependency>
+		<groupId>com.googlecode.androidannotations</groupId>
+		<artifactId>androidannotations</artifactId>
+		<version>2.7.1</version>
+		<scope>provided</scope>
+	</dependency>
+	<dependency>
+		<groupId>com.googlecode.androidannotations</groupId>
+		<artifactId>androidannotations-api</artifactId>
+		<version>2.7.1</version>
+	</dependency>
 		<!-- Gson: Java to Json conversion -->
 		<dependency>
 			<groupId>com.google.code.gson</groupId>

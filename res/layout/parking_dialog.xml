@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@android:color/black"
     android:orientation="vertical">
 
     <TextView
@@ -274,7 +273,6 @@
                 android:layout_weight="1"
                 android:text="@string/navigate"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
-
             <ImageView
                 android:id="@+id/imageView2"
                 android:layout_width="wrap_content"

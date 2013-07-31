@@ -20,14 +20,15 @@ import com.googlecode.androidannotations.annotations.EActivity;
 import com.googlecode.androidannotations.annotations.OptionsItem;
 import com.googlecode.androidannotations.annotations.OptionsMenu;
 
+@Deprecated
 @EActivity
 @OptionsMenu(value = R.menu.menu)
-public class DParkingMainActivity extends TabActivity implements
-		OnTabChangeListener {
+public class DParkingMainActivity extends TabActivity /*implements
+		OnTabChangeListener */{
 
 	private static String TAG = "dParking";
 
-	@Override
+	/*@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Log.i(TAG, "onCreate");
@@ -122,6 +123,6 @@ public class DParkingMainActivity extends TabActivity implements
 	}
 
 	TabHost tabHost;
-	SharedPreferences userPrefs;
+	SharedPreferences userPrefs;*/
 
 }

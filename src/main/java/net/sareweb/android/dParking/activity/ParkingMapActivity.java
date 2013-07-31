@@ -11,21 +11,17 @@ import net.sareweb.android.dParking.overlay.ParkingOverlayItem;
 import net.sareweb.android.dParking.util.CityUtil;
 import net.sareweb.android.dParking.util.ConnectionUtil;
 import net.sareweb.android.dParking.util.DParkingConstants;
+import android.app.Activity;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
-import com.google.android.maps.GeoPoint;
-import com.google.android.maps.MapActivity;
-import com.google.android.maps.MapController;
-import com.google.android.maps.MapView;
-import com.google.android.maps.Overlay;
 
-public class ParkingMapActivity extends MapActivity {
+public class ParkingMapActivity extends Activity {// MapActivity {
 	
     private static String TAG = "StationListActivity";
 
-    @Override
+   /* @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if(!ConnectionUtil.isOnline(this)){
@@ -78,7 +74,7 @@ public class ParkingMapActivity extends MapActivity {
 	City city;
 	List<Overlay> mapOverlays;
 	ParkingItemizedOverlay itemizedoverlay;
-	SharedPreferences userPrefs;
+	SharedPreferences userPrefs;*/
 
 }
 
