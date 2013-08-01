@@ -7,6 +7,8 @@ import net.sareweb.android.dParking.fragment.CounterFragment_;
 import net.sareweb.android.dParking.fragment.ParkingListFragment_;
 import net.sareweb.android.dParking.fragment.ParkingMapFragment_;
 import net.sareweb.android.dParking.fragment.SettingsFragment_;
+import net.sareweb.android.dParking.plus.PlusConnectionCallbacks;
+import net.sareweb.android.dParking.plus.PlusOnConnectionFailedListener;
 import net.sareweb.android.dParking.util.DParkingConstants;
 import net.sareweb.android.dParking.util.LangUtil;
 import android.content.SharedPreferences;
@@ -19,9 +21,12 @@ import android.util.Log;
 import android.view.Gravity;
 
 import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.google.android.gms.plus.PlusClient;
+import com.google.android.gms.plus.PlusOneButton;
 import com.googlecode.androidannotations.annotations.Click;
 import com.googlecode.androidannotations.annotations.EActivity;
 import com.googlecode.androidannotations.annotations.OptionsItem;
+import com.googlecode.androidannotations.annotations.ViewById;
 
 @EActivity(R.layout.main)
 public class MainActivity extends SherlockFragmentActivity {
@@ -31,6 +36,9 @@ public class MainActivity extends SherlockFragmentActivity {
 	DrawerToggle drawerToggle;
 	SharedPreferences userPrefs;
 	int fragmentToBeLoaded;
+	PlusClient mPlusClient;
+	@ViewById(R.id.plus_one_button)
+	PlusOneButton mPlusOneButton;
 
 	@Override
 	protected void onCreate(Bundle arg0) {
@@ -42,20 +50,42 @@ public class MainActivity extends SherlockFragmentActivity {
 				DParkingConstants.USER_PREFS_LANG,
 				DParkingConstants.USER_PREF_LANG_EU));
 
+		PlusClient.Builder pcBuilder = new PlusClient.Builder(this,
+				new PlusConnectionCallbacks(),
+				new PlusOnConnectionFailedListener());
+
+		mPlusClient = pcBuilder.clearScopes().build();
+		
 	}
 
 	@Override
 	protected void onResume() {
 		super.onResume();
+		
+		mPlusOneButton.initialize(mPlusClient,
+				"https://play.google.com/store/apps/details?id=net.sareweb.android.dParking", PLUS_ONE_REQUEST_CODE);
+
 
 		switch (fragmentToBeLoaded) {
 
 		default:
-			clickOncounter();
+			clickOnParkingList();
 			break;
 		}
 
 	}
+	
+	@Override
+	protected void onStart() {
+		super.onStart();
+        mPlusClient.connect();
+	}
+
+	@Override
+    protected void onStop() {
+        super.onStop();
+        mPlusClient.disconnect();
+    }
 
 	@Click(R.id.btnParking)
 	public void clickOnParkingList() {
@@ -140,4 +170,6 @@ public class MainActivity extends SherlockFragmentActivity {
 		super.onConfigurationChanged(newConfig);
 		drawerToggle.onConfigurationChanged(newConfig);
 	}
+	
+	private static final int PLUS_ONE_REQUEST_CODE = 0;
 }

@@ -1,5 +1,6 @@
 package net.sareweb.android.dParking.drawerToggle;
 
+import net.sareweb.android.dParking.R;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.view.View;
@@ -22,13 +23,13 @@ public class DrawerToggle extends ActionBarDrawerToggle {
 	
 	 /** Called when a drawer has settled in a completely closed state. */
     public void onDrawerClosed(View view) {
-    	activity.getSupportActionBar().setTitle("dparking");
+    	activity.getSupportActionBar().setTitle("dParking");
     	//activity.invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
     }
 
     /** Called when a drawer has settled in a completely open state. */
     public void onDrawerOpened(View drawerView) {
-    	activity.getSupportActionBar().setTitle("Menua");
+    	activity.getSupportActionBar().setTitle(activity.getString(R.string.menu));
     	//activity.invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
     }
 

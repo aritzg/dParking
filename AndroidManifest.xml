@@ -53,10 +53,16 @@
             android:name=".activity.AboutActivity_"
             android:theme="@android:style/Theme.NoTitleBar" />
 
-<!--         Debug -->
+		<!-- Debug -->
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyBH7E2JoJoPCsHsVDkKfKnSrA5Sz6T_7Pw" />
+        
+        <!-- Release -->
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyAyZAz-0L8R-2TSF1fy5HQ26Po4fQy2YdE" />
+        AIzaSyBH7E2JoJoPCsHsVDkKfKnSrA5Sz6T_7Pw
     </application>
 
 </manifest>

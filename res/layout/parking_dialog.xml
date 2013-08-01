@@ -92,7 +92,7 @@
                     android:id="@+id/tramo2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="16 - 90"/>
+                    android:text="16 - 30"/>
                  <TextView
                     android:id="@+id/precio2"
                     android:layout_width="wrap_content"
@@ -108,7 +108,7 @@
                     android:id="@+id/tramo3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="91 - 120"/>
+                    android:text="31 - 60"/>
                  <TextView
                     android:id="@+id/precio3"
                     android:layout_width="wrap_content"
@@ -124,7 +124,7 @@
                     android:id="@+id/tramo4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="121 - 240"/>
+                    android:text="61 - 90"/>
                  <TextView
                     android:id="@+id/precio4"
                     android:layout_width="wrap_content"
@@ -140,7 +140,7 @@
                     android:id="@+id/tramo5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="241 - 480"/>
+                    android:text="91 - 120"/>
                  <TextView
                     android:id="@+id/precio5"
                     android:layout_width="wrap_content"
@@ -156,13 +156,78 @@
                     android:id="@+id/tramo6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="481 - 840"/>
+                    android:text="121 - 180"/>
                  <TextView
                     android:id="@+id/precio6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0"/>
             </TableRow>
+            
+            <TableRow
+                android:id="@+id/tableRow8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+                 <TextView
+                    android:id="@+id/tramo7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="181 - 300"/>
+                 <TextView
+                    android:id="@+id/precio7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"/>
+            </TableRow>
+            
+            <TableRow
+                android:id="@+id/tableRow9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+                 <TextView
+                    android:id="@+id/tramo8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="301 - 540"/>
+                 <TextView
+                    android:id="@+id/precio8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"/>
+            </TableRow>
+            
+            <TableRow
+                android:id="@+id/tableRow10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+                 <TextView
+                    android:id="@+id/tramo9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="541 - 720"/>
+                 <TextView
+                    android:id="@+id/precio9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"/>
+            </TableRow>
+            
+            <TableRow
+                android:id="@+id/tableRow11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+                 <TextView
+                    android:id="@+id/tramo10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="721 - 840"/>
+                 <TextView
+                    android:id="@+id/precio10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"/>
+            </TableRow>
+            
         </TableLayout>
 
         <LinearLayout

@@ -25,4 +25,9 @@
     <string name="time">Tiempo: </string>
     <string name="x_euro">%1$s €</string>
     <string name="x_min">%1$s min</string>
+	<string name="ireki">Abrir</string>
+    <string name="itxi">Cerrar</string>
+    <string name="counter_notice">Pulse INICIAR al aparcar el coche. Vuelva a esta pantalla para comprobar el tiempo y coste acumulado en cualquier momento.</string>
+    <string name="menu">Menú</string>
+    <string name="version">Versión</string>
 </resources>

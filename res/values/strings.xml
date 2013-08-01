@@ -27,4 +27,7 @@
     <string name="x_min">%1$s min</string>
     <string name="ireki">Ireki</string>
     <string name="itxi">itxi</string>
+    <string name="counter_notice">Sakatu Hasi botoia kotxea aparkatzean. Itzuli pantaila honetara denbora eta kostu akumulatua ikusteko edozein momentutan.</string>
+    <string name="menu">Menua</string>
+    <string name="version">Bertsioa</string>
 </resources>

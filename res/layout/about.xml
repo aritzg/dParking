@@ -54,6 +54,23 @@
             android:textColor="#62748f"
             android:textSize="20sp" />
     </LinearLayout>
+    
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/version"
+        android:textSize="30sp" />
+    
+    <TextView
+            android:id="@+id/txVersion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="https://github.com/aritzg/dParking"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#62748f"
+            android:paddingLeft="10dp"
+            android:textSize="17sp" />
 
     <TextView
         android:layout_width="fill_parent"

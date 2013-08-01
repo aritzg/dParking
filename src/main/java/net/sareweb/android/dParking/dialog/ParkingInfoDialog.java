@@ -176,6 +176,14 @@ public class ParkingInfoDialog extends Dialog implements android.view.View.OnCli
 		precio5.setText(tarifaUtil.getPrecioTramo(4) + "€/min");
 		TextView precio6 = (TextView) findViewById(R.id.precio6);
 		precio6.setText(tarifaUtil.getPrecioTramo(5) + "€/min");
+		TextView precio7 = (TextView) findViewById(R.id.precio7);
+		precio7.setText(tarifaUtil.getPrecioTramo(6) + "€/min");
+		TextView precio8 = (TextView) findViewById(R.id.precio8);
+		precio8.setText(tarifaUtil.getPrecioTramo(7) + "€/min");
+		TextView precio9 = (TextView) findViewById(R.id.precio9);
+		precio9.setText(tarifaUtil.getPrecioTramo(8) + "€/min");
+		TextView precio10 = (TextView) findViewById(R.id.precio10);
+		precio10.setText(tarifaUtil.getPrecioTramo(9) + "€/min");
 		
 		
 	}

@@ -100,7 +100,7 @@ public class Parking {
 		String item1 = "/strong>";
 		if(Datos==null) return "??";
 		int pos1 = Datos.indexOf(item1);
-		int pos2 = Datos.indexOf("<",pos1);
+		int pos2 = Datos.indexOf("(",pos1);
 		if(pos1==-1 || pos2==-1) return "??";
 		String libres = Datos.substring(pos1+item1.length()+1,pos2);
 		return libres;

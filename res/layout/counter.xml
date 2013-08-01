@@ -133,7 +133,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:gravity="bottom"
-        android:text="Pulse INICIAR al aparcar el coche. Vuelva a esta pantalla para comprobar el tiempo y coste acumulado en cualquier momento."
+        android:text="@string/counter_notice"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#62748f" />
 

@@ -2,8 +2,8 @@ package net.sareweb.android.dParking.tarifa;
 
 public class Tarifa1Util extends TarifaUtil{
 	
-	/*Tarifas de : Okendo, Boulevard, Cervantes, Kursaal, San Martín*/
-	double precios1[] = {0.048477,0.032781,0.031163,0.032319,0.043259,0.011995};
+	/*Tarifas de : Okendo, Boulevard, Cervantes, Kursaal, San Martín*//*Zona especial*/
+	double precios1[] = {0.0526666667,0.0353333333,0.0353333333,0.0356666667,0.0336666667,0.035,0.0409166667,0.038375,0.013,0.0129166667};
 	
 	public Tarifa1Util() {
 		super();
