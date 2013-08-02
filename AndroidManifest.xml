@@ -37,26 +37,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".activity.ParkingListActivity_"
-            android:theme="@android:style/Theme.NoTitleBar" />
-        <activity
-            android:name=".activity.ParkingMapActivity"
-            android:theme="@android:style/Theme.NoTitleBar" />
-        <activity
-            android:name=".activity.CounterActivity_"
-            android:theme="@android:style/Theme.NoTitleBar" />
-        <activity
-            android:name=".activity.SettingsActivity_"
-            android:theme="@android:style/Theme.NoTitleBar" />
-        <activity
-            android:name=".activity.AboutActivity_"
-            android:theme="@android:style/Theme.NoTitleBar" />
 
 		<!-- Debug -->
-        <meta-data
+        <!-- <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyBH7E2JoJoPCsHsVDkKfKnSrA5Sz6T_7Pw" />
+            android:value="AIzaSyBH7E2JoJoPCsHsVDkKfKnSrA5Sz6T_7Pw"/>  -->
         
         <!-- Release -->
         <meta-data

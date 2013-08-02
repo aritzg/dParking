@@ -8,6 +8,7 @@ import net.sareweb.android.dParking.util.DParkingConstants;
 import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ListView;
 
 import com.actionbarsherlock.app.SherlockFragment;
@@ -35,6 +36,12 @@ public class ParkingListFragment extends SherlockFragment {
 		loadData();
 
 	}
+	
+	@Override
+	public void onResume() {
+		super.onResume();
+		//dialog.dismiss();
+	}
 
 	@Background
 	void loadData() {
@@ -50,8 +57,13 @@ public class ParkingListFragment extends SherlockFragment {
 	@UiThread
 	void finishedBackgroundThread(int result) {
 		sAdapter = new ParkingAdapter(getSherlockActivity(), city);
-		ListView list = (ListView) getView().findViewById(android.R.id.list);
-		list.setAdapter(sAdapter);
+		try {
+			ListView list = (ListView) getSherlockActivity().findViewById(android.R.id.list);
+			list.setAdapter(sAdapter);
+		} catch (Exception e) {
+			Log.e(TAG, "", e);
+		}
+		
 		dialog.cancel();
 	}
 }

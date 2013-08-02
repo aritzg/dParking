@@ -41,11 +41,16 @@ public class MainActivity extends SherlockFragmentActivity {
 	PlusOneButton mPlusOneButton;
 
 	@Override
-	protected void onCreate(Bundle arg0) {
-		super.onCreate(arg0);
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
 		userPrefs = getSharedPreferences(DParkingConstants.USER_PREFS,
 				MODE_PRIVATE);
-
+		if(savedInstanceState!=null){
+			Log.d(TAG, "Restoring state info");
+			fragmentToBeLoaded = savedInstanceState.getInt(FRAGMENT, FRAGMENT_PARKING_LIST);
+			Log.d(TAG, "fragmentToBeLoaded " + fragmentToBeLoaded);
+		}
+		
 		LangUtil.updateLanguage(this, userPrefs.getString(
 				DParkingConstants.USER_PREFS_LANG,
 				DParkingConstants.USER_PREF_LANG_EU));
@@ -67,7 +72,22 @@ public class MainActivity extends SherlockFragmentActivity {
 
 
 		switch (fragmentToBeLoaded) {
-
+		case FRAGMENT_PARKING_LIST:
+			clickOnParkingList();
+			break;
+		case FRAGMENT_PARKING_MAP:
+			clickOnParkingMap();
+			break;
+		case FRAGMENT_COUNTER:
+			clickOnCounter();
+			break;
+		case FRAGMENT_SETTINGS:
+			clickOnSettings();
+			break;
+		case FRAGMENT_ABOUT:
+			clickOnAbout();
+			break;
+		
 		default:
 			clickOnParkingList();
 			break;
@@ -96,6 +116,7 @@ public class MainActivity extends SherlockFragmentActivity {
 				.replace(R.id.content_frame, fragment).commit();
 
 		mDrawerLayout.closeDrawers();
+		fragmentToBeLoaded=FRAGMENT_PARKING_LIST;
 	}
 	
 	@Click(R.id.btnMap)
@@ -107,10 +128,11 @@ public class MainActivity extends SherlockFragmentActivity {
 				.replace(R.id.content_frame, fragment).commit();
 
 		mDrawerLayout.closeDrawers();
+		fragmentToBeLoaded=FRAGMENT_PARKING_MAP;
 	}
 	
 	@Click(R.id.btnCounter)
-	public void clickOncounter() {
+	public void clickOnCounter() {
 		FragmentManager fragmentManager = getSupportFragmentManager();
 		Fragment fragment = new CounterFragment_();
 
@@ -118,6 +140,7 @@ public class MainActivity extends SherlockFragmentActivity {
 				.replace(R.id.content_frame, fragment).commit();
 
 		mDrawerLayout.closeDrawers();
+		fragmentToBeLoaded=FRAGMENT_COUNTER;
 	}
 
 	@Click(R.id.btnSettings)
@@ -129,6 +152,7 @@ public class MainActivity extends SherlockFragmentActivity {
 				.replace(R.id.content_frame, fragment).commit();
 
 		mDrawerLayout.closeDrawers();
+		fragmentToBeLoaded=FRAGMENT_SETTINGS;
 	}
 
 	@Click(R.id.btnAbout)
@@ -140,6 +164,7 @@ public class MainActivity extends SherlockFragmentActivity {
 				.replace(R.id.content_frame, fragment).commit();
 
 		mDrawerLayout.closeDrawers();
+		fragmentToBeLoaded=FRAGMENT_ABOUT;
 	}
 
 	@OptionsItem
@@ -170,6 +195,21 @@ public class MainActivity extends SherlockFragmentActivity {
 		super.onConfigurationChanged(newConfig);
 		drawerToggle.onConfigurationChanged(newConfig);
 	}
+	
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		Log.d(TAG, "Saving current state info");
+		outState.putInt(FRAGMENT, fragmentToBeLoaded);
+	}
+	
+	private static final String FRAGMENT ="fragment";
+	private static final int FRAGMENT_PARKING_LIST = 0;
+	private static final int FRAGMENT_PARKING_MAP = 1;
+	private static final int FRAGMENT_COUNTER = 2;
+	private static final int FRAGMENT_SETTINGS = 3;
+	private static final int FRAGMENT_ABOUT = 4;
+	
 	
 	private static final int PLUS_ONE_REQUEST_CODE = 0;
 }
